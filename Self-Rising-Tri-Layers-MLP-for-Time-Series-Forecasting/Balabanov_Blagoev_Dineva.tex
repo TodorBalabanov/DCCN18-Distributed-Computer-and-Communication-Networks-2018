@@ -44,21 +44,34 @@ Time series forecasting is an attractive and heavily researched area. A very pop
 \keywords{data mining, time series forecasting, artificial neural networks}
 \end{abstract}
 
-\section{Introduction}
+\section{Introduction} \label{Introduction}
 
-%\subsection{Time Series}
+There are numerous techniques applied in the field of times series forecasting \cite{atanasova01}. Artificial neural networks are one technique which is very successfully applied for such forecasting. Time series are values measured in the time by keeping strict order of the measurements (time-value pairs) \cite{balabanov01}. In most cases measurement interval is fixed, but expectations are also possible. The idea in time series is that values are not independent in time. Values are related in such way that future values are dependent from the past values. Forecasting problem is defined as by knowing past values to do a prediction for the future values. In order such forecasting to be successful prediction model construction is needed. Artificial neural networks are one of the proven models in time series forecasting. Initially artificial neural networks were inspired by biological neural systems. First appearance of artificial neural networks was in the middle of 20th century \cite{balabanov02}. The most commonly used artificial neural networks are oriented weighted graphs. Nodes of the graph are called neurons. The links between the neurons have weights and these weights are the core of the information presented in the network. Artificial neural networks are working in two common modes - training and operation. The training mode is executed as an optimization task in which weights in the network should be modified in such way in which the network will learn the training patterns best. There are a lot of training algorithms developed during last four decades, but the most popular one is the backpropagation of the error. Backpropagation of the error is an exact numerical method and it is the prefered training method in this study. The idea in this method is a minimization of the total neural network error achieved during processing of all training examples. The gradient of the total error is used for weights updating as direction of the update and the magnitude of the update. The way in which links between neurons are organized is common for the artificial neural network topology. There are a lot of different topologies widely investigated in the literature, like generalized nets \cite{tashev01} or deep learning neural networks. When the time series are too noise the input information can be filtered with Kalman filter for example \cite{alexandrov01}. 
 
-%\subsection{Artificial Neural Networks}
+In this study the main idea used into deep learning neural networks is reverted and instead of hidden layers number rising the size of the input and the hidden layers is extended during the neural network training. Extension of the input layer is related with the fact that each time series rise by appearance of a new measurement. The the goal of the training is the size of the input layer to as big as the size of the full time series is. 
 
-%\subsection{Deep Learning}
+The paper is organized as follows: Section \ref{Introduction} introduces the problem; Section \ref{Model Proposition} presents a model and optimization approach; Section \ref{Experiments and Results} gives experiment details; Section \ref{Conclusion} concludes and some further ideas for research are pointed.
 
-\section{Model Proposition}
+\section{Model Proposition} \label{Model Proposition}
 
-\section{Experiments \& Results}
+\section{Experiments and Results} \label{Experiments and Results}
 
-\section{Conclusion}
+\section{Conclusion} \label{Conclusion}
+
+The proposed model for self rising tri layers MLP for time series forecasting is a promising approach for artificial neural networks training speed-up. The rising size of the input layer involve a maximum information available in the time series, but the proposed procedure for artificial neural network training takes in account that older values should be less informative. As further research it will be interesting such self-rising training to be implemented az parallel computing solution. 
 
 \begin{thebibliography}{99}
+
+\bibitem{atanasova01} Atanasova T., Barova M., Exploratory analysis of Time Series for hypothesize feature values, Proceedings of International Scientific Conference UniTech17, Gabrovo, Bulgaria, ISSN: 1313-230X, 2017, V. 2, P. 399--403.
+
+\bibitem{balabanov01} Balabanov, T., Zankinski, I., Dobrinkova, N., Time Series Prediction by Artificial Neural Networks and Differential Evolution in Distributed Environment, Proceedings of the International Conference on Large-Scale Scientific Computing, Sozopol, Bulgaria, Lecture Notes in Computer Science, Springer, ISBN 978-3-642-29842-4, 2011, V. 7116, N. 1, P. 198–-205. 
+
+\bibitem{balabanov02} Balabanov, T., Long Short Term Memory in MPL Pair, Proceedings of the  International Scientific Conference UniTech17, Gabrovo, Bulgaria, ISSN: 1313-230X, 2017, V. 2, P. 375--379.
+
+\bibitem{tashev01} Tashev T., Hristov H., Modeling of Synthesis of Information Processes with Generalized Nets, Cybernetics and Information Technologies, Academic Publishing House Prof. Marin Drinov, Sofia, Bulgaria, 2003, V.2, P. 92--104.
+
+\bibitem{alexandrov01} Alexandrov, A., AD HOC Kalman filter based fusion algorithm for real-time Wireless Sensor Data Integration, Proceedings of the Eleventh International Conference Flexible Quering Answering Systems, Warsaw, Poland, Springer, ISBN 978-3-319-26153-9, 2015, V. 400, P. 151--160.
+
 \end{thebibliography}
 
 \end{document}
