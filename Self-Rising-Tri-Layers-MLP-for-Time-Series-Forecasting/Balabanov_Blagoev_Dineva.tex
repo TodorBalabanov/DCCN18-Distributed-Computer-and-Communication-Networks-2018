@@ -10,6 +10,7 @@
 \linespread{1.0}
 
 \usepackage{amsmath}
+\usepackage{placeins}
 
 \makeatletter
 \fancyhead[RO]{\small DCCN 2018\\ {17-21 September 2018}}
@@ -56,6 +57,36 @@ The paper is organized as follows: Section \ref{Introduction} introduces the pro
 
 Conditionally the time series is divided to past and future. The values supplied into the input of the artificial neural network are called lag and they are subset of the past values nearest to the future values. The values obtained in the output of the artificial neural network are the prediction and they are compared with the subset of the future values called lead. 
 
+In the proposed model set of artificial neural networks is used. The smallest artificial neural network has 1-1-1 topology (Fig. \ref{fig:pic01}-left). The network is trained with examples with single input. The goal in the model is forecast only one value ahead in time. That is why all sub-networks have only single output. Fig. \ref{fig:pic01}-left shows only 3 intermediate steps of the training. All 29 input values are supplied as training examples to resilient backpropagation training. Training stops on certain epsilon level for total neural network change.
+
+\begin{figure}[ht!]
+   \centering
+     \includegraphics[width=0.8\textwidth]{pic01}
+    \caption {Training of artificial neural sub-networks with 1-1-1 topology (left) and 2-1-1 topology (right).}
+\label{fig:pic01}
+\end{figure}
+\FloatBarrier
+
+After training of 1-1-1 topology the weights values of the first sub-network are loaded in second sub-network with 2-1-1 topology (Fig. \ref{fig:pic01}-right). It is obvious that one of the weights would not be loaded, because it is not presented in the first sub-network. This weight has the value from the previous training of second sub-network. Time series is reorganized to supply two values for input and to expect one forecasting in the output. For the second sub-network there are 28 input examples and single output is expected. Training is the same as with the first sub-network - resilient backpropagation training. Similarly training stops on certain epsilon level for total neural network change.
+
+Third sub-network has 3-2-1 topology. The size of the hidden layer is automatically selected by incremental pruning algorithm implemented in Encog Machine Learning Framework \cite{heaton01}. Fig. \ref{fig:pic02}-left shows two neurons in the hidden layer, but it is only illustrative the real size of the hidden layer is estimated by the algorithm. 
+
+\begin{figure}[ht!]
+   \centering
+     \includegraphics[width=0.8\textwidth]{pic02}
+    \caption {Training of artificial neural sub-networks with 3-2-1 topology (left) and 4-2-1 topology.}
+\label{fig:pic02}
+\end{figure}
+\FloatBarrier
+
+\begin{figure}[ht!]
+   \centering
+     \includegraphics[width=0.8\textwidth]{pic03}
+    \caption {Training of artificial neural sub-network with n-m-1 topology. Some of the links between input and hidden layer are not visualized for better appearance.}
+\label{fig:pic03}
+\end{figure}
+\FloatBarrier
+
 \section{Experiments and Results} \label{Experiments and Results}
 
 \section{Conclusion} \label{Conclusion}
@@ -73,6 +104,8 @@ The proposed model for self rising tri layers MLP for time series forecasting is
 \bibitem{tashev01} Tashev T., Hristov H., Modeling of Synthesis of Information Processes with Generalized Nets, Cybernetics and Information Technologies, Academic Publishing House Prof. Marin Drinov, Sofia, Bulgaria, 2003, V.2, P. 92--104.
 
 \bibitem{alexandrov01} Alexandrov, A., AD HOC Kalman filter based fusion algorithm for real-time Wireless Sensor Data Integration, Proceedings of the Eleventh International Conference Flexible Quering Answering Systems, Warsaw, Poland, Springer, ISBN 978-3-319-26153-9, 2015, V. 400, P. 151--160.
+
+\bibitem{heaton01} Heaton J., Encog Machine Learning Framework, Heaton Research, Inc., \url{http://www.heatonresearch.com/encog/}
 
 \end{thebibliography}
 
